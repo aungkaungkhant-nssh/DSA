@@ -51,24 +51,3 @@ const test = new Test();
 
 // Then repeat the whole process for the entire list, but each time you can stop one element earlier (because the largest elements "bubble up" to the end).
 
-
-// sort() {
-//     const arrLength = this.arr.length;
-//     for (let i = 0; i < arrLength - 1; i++) {
-//         let minIndex = i;
-
-//         // Find the index of the minimum element
-//         for (let j = i + 1; j < arrLength; j++) {
-//             if (this.arr[j] < this.arr[minIndex]) {
-//                 minIndex = j;
-//             }
-//         }
-
-//         // Swap the found minimum with the first unsorted element
-//         if (minIndex !== i) {
-//             [this.arr[i], this.arr[minIndex]] = [this.arr[minIndex], this.arr[i]];
-//         }
-//     }
-
-//     console.log(this.arr);
-// }
