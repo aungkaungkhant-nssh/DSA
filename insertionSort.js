@@ -2,7 +2,7 @@ class InsertionSort{
     constructor(arr){
         this.arr = arr;
     }
-
+    [5,4]
     sort(){
        for(let k = 1; k< this.arr.length;k++){
             let temp = this.arr[k];
