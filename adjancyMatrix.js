@@ -58,3 +58,17 @@ graph.addEdge(0,1)
 graph.addEdge(1,2)
 
 graph.print()
+
+/** Advantages:
+ *
+ * - **Fast edge lookup**: O(1) time complexity to check if an edge exists between two vertices.
+ * - **Simple implementation**, especially for dense graphs.
+ * - **Efficient for dense graphs**, where number of edges is close to V².
+ */
+
+/** Disadvantages:
+ *
+ * - **High space complexity**: O(V²), even if the graph has few edges.
+ * - **Inefficient for sparse graphs**, wasting memory on many 0s.
+ * - **Slower iteration** over neighbors: O(V) per vertex.
+ */
