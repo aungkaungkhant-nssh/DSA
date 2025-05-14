@@ -12,20 +12,33 @@ class AdjacencyList{
     addNode(nodeName){
       const node =  new Node(nodeName);
       this.nodes.push(node)
-      this.adjList.set(this.nodes.length-1,[])
+      this.adjList.set(nodeName,[])
     }
 
     addEdge(src,dist){
+       
         if(this.adjList.has(src)){
-            this.adjList.get(src).push(dist);
+        
+            this.adjList.set(src,dist)
         }
     }
     print() {
+    
         for (let [index, neighbors] of this.adjList.entries()) {
-          const nodeName = this.nodes[index].name;
-          const neighborNames = neighbors.map(i => this.nodes[i].name).join(", ");
+          const nodeName = index;
+          const neighborNames = neighbors.map(i => i).join(", ");
           console.log(`${nodeName} → ${neighborNames}`);
         }
+    }
+
+    depthFirstSearch(start,visited = new Set()){
+       console.log(start)
+       visited.add(start)
+       for(const neighbor of this.adjList.get(start)){
+            if (!visited.has(neighbor)) {
+                this.depthFirstSearch(neighbor)
+            }
+       }
     }
 }
 
@@ -35,11 +48,20 @@ const adjList= new AdjacencyList();
 adjList.addNode("A")
 adjList.addNode("B")
 adjList.addNode("C")
+adjList.addNode("D")
+adjList.addNode("E")
+adjList.addNode("F")
 
+adjList.addEdge("A",["B","C"])
+adjList.addEdge("B",["D","E"])
+adjList.addEdge("C",["F"])
+adjList.addEdge("E",["F"])
+// adjList.addEdge(2,[5])
+// adjList.addEdge(4,[5])
 
-adjList.addEdge(0,[1,2])
+adjList.depthFirstSearch("A")
 
-adjList.print()
+// console.log(adjList.print())
 
 
 /** Advantages:
