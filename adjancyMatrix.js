@@ -46,6 +46,40 @@ class Graph {
       console.log(row);
     }
   }
+
+  depthFirstSearch(start, visited = new Set()) {
+    if (visited.has(start)) return;
+  
+    visited.add(start);
+    console.log(this.nodes[start].name); // Print node name, not index
+  
+    for (let i = 0; i < this.matrix[start].length; i++) {
+      if (this.matrix[start][i] === 1) {
+        this.depthFirstSearch(i, visited);
+      }
+    }
+  }
+
+  breadthFirstSearch(start){
+    const visited= new Set();
+    const queue = [start];
+
+    while(queue.length > 0){
+      const current = queue.shift();
+      
+      if (visited.has(current)) continue;
+
+      console.log(this.nodes[current].name);
+
+      for (let i = 0; i < this.matrix[current].length; i++) {
+        if (this.matrix[current][i] === 1) {
+          queue.push(i)
+        }
+      }
+  }
+
+
+  }
 }
 
 const graph = new Graph()
@@ -53,11 +87,22 @@ const graph = new Graph()
 graph.addNode("A")
 graph.addNode("B")
 graph.addNode("C")
+graph.addNode("D")
+graph.addNode("E")
+graph.addNode("F")
 
 graph.addEdge(0,1)
-graph.addEdge(1,2)
+graph.addEdge(0,2)
+graph.addEdge(1,3)
+graph.addEdge(1,4)
+graph.addEdge(2,5)
+graph.addEdge(4,5)
 
-graph.print()
+// graph.depthFirstSearch(0)
+
+// graph.print()
+
+graph.breadthFirstSearch(0)
 
 /** Advantages:
  *

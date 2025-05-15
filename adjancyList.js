@@ -32,13 +32,32 @@ class AdjacencyList{
     }
 
     depthFirstSearch(start,visited = new Set()){
+        if (visited.has(start)) return;
        console.log(start)
        visited.add(start)
        for(const neighbor of this.adjList.get(start)){
             if (!visited.has(neighbor)) {
-                this.depthFirstSearch(neighbor)
+                this.depthFirstSearch(neighbor,visited)
             }
        }
+    }
+
+    breadthFirstSearch(start){
+        const visited= new Set();
+        const queue = [start]
+
+        while(queue.length > 0){
+            const current = queue.shift();
+            if (visited.has(current)) continue;
+            visited.add(current)
+            console.log(current)
+            for(const neighbor of this.adjList.get(current)){
+                if(!visited.has(neighbor)){
+                    queue.push(neighbor)
+                }
+              
+            }
+        }
     }
 }
 
@@ -59,7 +78,8 @@ adjList.addEdge("E",["F"])
 // adjList.addEdge(2,[5])
 // adjList.addEdge(4,[5])
 
-adjList.depthFirstSearch("A")
+// adjList.depthFirstSearch("A")
+adjList.breadthFirstSearch("A")
 
 // console.log(adjList.print())
 
